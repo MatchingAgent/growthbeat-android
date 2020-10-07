@@ -17,6 +17,15 @@ public abstract class CatchableThread extends Thread {
         initializeUncaughtExceptionHandler();
     }
 
+    @Override
+    public void run() {
+        try {
+            super.run();
+        } catch (Throwable e) {
+            // do nothing
+        }
+    }
+
     private void initializeUncaughtExceptionHandler() {
 
         setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
